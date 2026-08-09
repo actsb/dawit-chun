@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Dawit Chun</title>
+<meta name="description" content="Dawit Chun's research: adaptive RISC-V microarchitecture (PDPM, IEEE ICCD 2026 submission), brain-to-text decoding, autonomous-vehicle hardware, and semiconductor physics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Dawit <b>Chun</b></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="journey.html">Journey &amp; Honors</a></li>
+      <li><a href="service.html">Teaching &amp; Service</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="kicker">Research</span>
+    <h1>Six projects, one question:<br>can hardware adapt to its workload?</h1>
+    <p>A morphable RISC-V processor with learning on-chip · brain-to-text decoding for ALS · autonomous-vehicle hardware built to the PCB · and the physics underneath it all.</p>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="wrap">
+
+    <div class="proj reveal" id="pdpm">
+      <div class="meta">
+        <span class="venue" style="--vc:#d98e32;color:#14100a">IEEE ICCD 2026</span>
+        <span class="year">2026</span>
+        <span class="role">First author · in submission</span>
+      </div>
+      <div>
+        <h3>PDPM — Perceptron-Driven Pipeline Morphing <span class="award">⚙️ flagship work</span></h3>
+        <p class="sub">A morphable RISC-V processor that reconfigures its pipeline depth at runtime, steered by an online-learned predictor</p>
+        <figure class="pfig">
+          <svg viewBox="0 0 1200 240" role="img" aria-label="Diagram of a pipeline morphing between seven, five, and three stages">
+            <rect width="1200" height="240" fill="#0e1621"/>
+            <g font-family="Inter,sans-serif" font-size="15" fill="#8fa3bb">
+              <text x="30" y="46">P7 · max clock 1.5×</text><text x="30" y="116">P5 · 1.3×</text><text x="30" y="186">P3 · 1.1×</text>
+            </g>
+            <g>
+              <rect x="210" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="310" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="410" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="510" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="610" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="710" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="810" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/>
+              <rect x="210" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="335" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="460" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="585" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="710" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/>
+              <rect x="210" y="166" width="90" height="30" rx="5" fill="#1d3049" stroke="#d98e32" stroke-width="1.8"/><rect x="410" y="166" width="90" height="30" rx="5" fill="#1d3049" stroke="#d98e32" stroke-width="1.8"/><rect x="610" y="166" width="90" height="30" rx="5" fill="#1d3049" stroke="#d98e32" stroke-width="1.8"/>
+            </g>
+            <g stroke="#d98e32" stroke-width="2" fill="none" opacity=".7">
+              <path d="M950,41 C1010,41 1010,111 950,111"/>
+              <path d="M950,111 C1010,111 1010,181 950,181"/>
+            </g>
+            <g font-family="Georgia,serif" font-style="italic" font-size="19" fill="#f0cfa2">
+              <text x="960" y="60">a 10-weight perceptron</text><text x="960" y="86">chooses the depth,</text><text x="960" y="112">every 200 instructions</text>
+            </g>
+            <text x="960" y="196" font-family="Inter,sans-serif" font-size="15" fill="#8fa3bb">94.28% accuracy · +0.107% overhead</text>
+          </svg>
+          <figcaption>The idea, drawn: one superset datapath, three pipeline depths. Bypass multiplexers morph the machine; an on-chip learned regressor picks the winning (depth, clock) point. (Original paper figures withheld during double-blind review.)</figcaption>
+        </figure>
+        <p>Pipeline depth is fixed at design time — but the optimal depth changes with the workload, and even between phases of one program. PDPM makes it a runtime variable.</p>
+        <ul>
+          <li>Morphable RV32IM superset datapath: 3/5/7-stage modes via bypass multiplexers, with mode-appropriate clock scaling — 12 valid (depth, clock) configurations</li>
+          <li>Key insight: dominated configurations collapse the decision to 3 choices, so a 2-output cycle-ratio regressor (10 int8 weights, ~40 LUTs) replaces a 12-class classifier — and wins on every metric</li>
+          <li>94.28% ± 2.48% configuration accuracy at +0.107% overhead across 301 benchmarks under nested 5-fold cross-validation; matches a per-phase oracle within +0.1% on six multi-phase workloads</li>
+          <li>~4,000 lines of Verilog, 15 modules; validated on Lattice iCE40 UP5K (Yosys/nextpnr) and Xilinx Artix-7 (Vivado); predictor adds &lt;1% logic</li>
+        </ul>
+        <div class="tags"><span>RISC-V</span><span>Verilog</span><span>Online Learning</span><span>FPGA</span><span>Microarchitecture</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" id="ml">
+      <div class="meta">
+        <span class="venue" style="--vc:#8a63b8">arXiv Preprint</span>
+        <span class="year">2026</span>
+        <span class="role">Equal-contribution first author</span>
+      </div>
+      <div>
+        <h3>iPhoneme — Brain-to-Text Communication for ALS</h3>
+        <p class="sub">A ConformerXL neural decoder translating brain activity into text (arXiv:2604.16441)</p>
+        <figure class="pfig">
+          <svg viewBox="0 0 1200 200" role="img" aria-label="Neural signals decoded into phonemes and text">
+            <rect width="1200" height="200" fill="#f3eff8"/>
+            <path d="M60,100 C80,60 95,140 115,100 C135,60 150,140 170,100 C190,64 205,136 225,100" fill="none" stroke="#8a63b8" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M270,100 h60 m24,0 h60" stroke="#8a63b8" stroke-width="2.5" stroke-dasharray="8 8"/>
+            <g font-family="Georgia,serif" font-size="24" fill="#5d4382">
+              <text x="480" y="82">/h/ /ɛ/ /l/ /oʊ/</text>
+            </g>
+            <path d="M700,74 h56 m0,0 l-12,-9 m12,9 l-12,9" stroke="#8a63b8" stroke-width="2.5" fill="none"/>
+            <text x="800" y="86" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#171d26">&#8220;hello&#8221;</text>
+            <text x="480" y="150" font-family="Inter,sans-serif" font-size="16" fill="#4a5464">ConformerXL sequence decoding &#183; restoring speech for people with ALS</text>
+          </svg>
+          <figcaption>From neural activity to phonemes to words — my bridge between hardware-grade ML engineering and assistive communication.</figcaption>
+        </figure>
+        <ul>
+          <li>ConformerXL architecture for neural sequence decoding, applied to brain-to-text for people with ALS</li>
+          <li>Model architecture and decoding pipeline as equal-contribution first author (with Y. Cha, S.J. Park)</li>
+        </ul>
+        <p class="doi">arXiv: <a href="https://doi.org/10.48550/arXiv.2604.16441" target="_blank" rel="noopener">10.48550/arXiv.2604.16441</a></p>
+        <div class="tags"><span>BCI</span><span>Conformer</span><span>Sequence Decoding</span><span>Assistive Tech</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" id="robotics">
+      <div class="meta">
+        <span class="venue" style="--vc:#2e7d93">Industry R&amp;D</span>
+        <span class="year">2024–25</span>
+        <span class="role">Research Intern, Ubion Corp.</span>
+      </div>
+      <div>
+        <h3>Autonomous-Vehicle Hardware &amp; the DeepCo Board</h3>
+        <p class="sub">Eight months of end-to-end hardware engineering — from PCB layout to a product demonstrated at COEX 2025</p>
+        <figure class="pfig">
+          <svg viewBox="0 0 1200 200" role="img" aria-label="Autonomous vehicle with sensor arcs beside a circuit board">
+            <rect width="1200" height="200" fill="#e9f2f0"/>
+            <g stroke="#171d26" stroke-width="3.5" fill="none" stroke-linejoin="round">
+              <path d="M120,138 L150,100 L260,100 L300,138 Z M100,138 H320"/>
+              <circle cx="160" cy="146" r="14"/><circle cx="270" cy="146" r="14"/>
+            </g>
+            <g stroke="#2e7d93" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M330,96 C342,108 342,128 330,140"/><path d="M352,84 C372,104 372,132 352,152"/><path d="M374,72 C402,100 402,136 374,164"/>
+            </g>
+            <g transform="translate(560,40)">
+              <rect x="0" y="0" width="220" height="120" rx="10" fill="#10402e" opacity=".92"/>
+              <rect x="26" y="26" width="52" height="52" rx="6" fill="#0a2a1e" stroke="#5cbf8a" stroke-width="2"/>
+              <g stroke="#5cbf8a" stroke-width="2"><path d="M100,36 h60 M100,52 h84 M100,68 h48 M100,84 h72" fill="none"/></g>
+              <g fill="#d98e32"><circle cx="190" cy="30" r="4"/><circle cx="190" cy="50" r="4"/><circle cx="190" cy="70" r="4"/></g>
+            </g>
+            <text x="830" y="86" font-family="Georgia,serif" font-style="italic" font-size="21" fill="#2e7d93">vision &#183; servo control &#183; custom PCB</text>
+            <text x="830" y="120" font-family="Inter,sans-serif" font-size="15" fill="#4a5464">YOLO &#183; CNN regression &#183; ESP32 &#183; Pi 5</text>
+          </svg>
+          <figcaption>Two builds: a redesigned autonomous vehicle platform, and the DeepCo Board — an ESP32 AI-IoT education platform with on-board vision and audio.</figcaption>
+        </figure>
+        <ul>
+          <li>Redesigned autonomous-vehicle hardware end-to-end: PCB layout, servo-motor integration, chassis; migrated compute from Raspberry Pi 4 to Pi 5</li>
+          <li>Implemented YOLO and 2D-CNN regression perception (TensorFlow/OpenCV/MediaPipe) with variable-angle servo control</li>
+          <li>Designed the "DeepCo Board" — ESP32-based AI-IoT education platform with custom PCB and mobile-app deployment tools; demonstrated at COEX Education Fair 2025</li>
+        </ul>
+        <div class="tags"><span>PCB Design</span><span>Computer Vision</span><span>ESP32</span><span>Autonomous Driving</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="meta">
+        <span class="venue" style="--vc:#5cbf8a;color:#0a2a1e">Robotics</span>
+        <span class="year">2023–25</span>
+        <span class="role">SNU DYROS · IRO medalist</span>
+      </div>
+      <div>
+        <h3>Robotics &amp; Autonomous Driving</h3>
+        <p class="sub">From competition podiums to Seoul National University's robotics bootcamp</p>
+        <ul>
+          <li>Gold Medal (2025) &amp; Silver Medal (2024), International Robot Olympiad — Autonomous Driving; five IRO medals total, 2023–25</li>
+          <li>Selected into SNU's DYROS Robotics Bootcamp (Aug 2025): control algorithms, motion planning, ROS, inverse kinematics, actuator control</li>
+          <li>KAIST AI &amp; Data Science Masterclass (DICIA track, A+): advanced computer vision and reinforcement learning</li>
+        </ul>
+        <div class="tags"><span>ROS</span><span>Motion Planning</span><span>Inverse Kinematics</span><span>Reinforcement Learning</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" id="fpga">
+      <div class="meta">
+        <span class="venue" style="--vc:#8a63b8">Applied Physics</span>
+        <span class="year">2025–26</span>
+        <span class="role">Coursework research</span>
+      </div>
+      <div>
+        <h3>Semiconductors, Thermodynamics &amp; Vision</h3>
+        <p class="sub">The physics grounding beneath the hardware</p>
+        <figure class="pfig">
+          <svg viewBox="0 0 1200 200" role="img" aria-label="Semiconductor band diagram with a controlled bandgap">
+            <rect width="1200" height="200" fill="#fdf6ec"/>
+            <g>
+              <rect x="90" y="36" width="300" height="34" rx="6" fill="#d98e32" opacity=".82"/>
+              <rect x="90" y="132" width="300" height="34" rx="6" fill="#2e7d93" opacity=".82"/>
+              <path d="M240,74 v54" stroke="#171d26" stroke-width="2.5"/>
+              <path d="M240,74 l-7,12 h14 Z M240,128 l-7,-12 h14 Z" fill="#171d26"/>
+              <text x="258" y="107" font-family="Georgia,serif" font-style="italic" font-size="19" fill="#171d26">E&#8342;</text>
+            </g>
+            <g>
+              <rect x="520" y="36" width="140" height="130" rx="6" fill="#d98e32" opacity=".55"/>
+              <rect x="668" y="36" width="140" height="130" rx="6" fill="#2e7d93" opacity=".5"/>
+              <text x="524" y="26" font-family="Inter,sans-serif" font-size="14" fill="#4a5464">tandem junction — two gaps, one cell</text>
+            </g>
+            <text x="880" y="88" font-family="Georgia,serif" font-style="italic" font-size="20" fill="#b0652f">imperfections,</text>
+            <text x="880" y="116" font-family="Georgia,serif" font-style="italic" font-size="20" fill="#b0652f">used on purpose</text>
+          </svg>
+          <figcaption>Band-engineering studies: tandem bandgap design, and using material imperfections themselves as a bandgap control knob.</figcaption>
+        </figure>
+        <ul>
+          <li>Tandem-bandgap semiconductor design; using material imperfections as bandgap control</li>
+          <li>Thermodynamic optimization of the F-35 XA100 adaptive-cycle engine architecture</li>
+          <li>Computer vision: Generalized Hough Transform improvements; Engageli eye-tracker analysis</li>
+        </ul>
+        <div class="tags"><span>Semiconductor Physics</span><span>Thermodynamics</span><span>Computer Vision</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="meta">
+        <span class="venue" style="--vc:#b0652f">Published Systems</span>
+        <span class="year">2023–25</span>
+        <span class="role">Co-author · patent filed</span>
+      </div>
+      <div>
+        <h3>Shared Systems Work — CHI 2025 &amp; the Smart Disaster Window</h3>
+        <p class="sub">Award-winning systems built with my sister and collaborators</p>
+        <ul>
+          <li>Watch-Out (ACM CHI 2025 EA): co-first-author of the wearable Alzheimer's-assistance system — 🏆 1st Place, Student Design Competition, Yokohama</li>
+          <li>Smart IoT Security/Disaster Window (JKSCI 30(6) &amp; 30(4), 2025 — Excellence Paper Award): embedded control and the 5-second rapid-actuation mechanism; Korean patent application 10-2026-0029503</li>
+          <li>IoT Hydroelectric Shower Module (Korea Association for Science and Creativity, 2023)</li>
+        </ul>
+        <div class="gallery" style="margin:6px 0 16px">
+          <figure class="reveal"><img src="assets/window2.jpg" alt="The smart security window prototype on the lab bench" loading="lazy"><figcaption>The disaster-window prototype on the bench — I built the actuation and embedded control.</figcaption></figure>
+          <figure class="reveal"><img src="assets/lock2.jpg" alt="Tagging a smartwatch on the Watch-Out NFC smart lock prototype" loading="lazy"><figcaption>Watch-Out's NFC smart-lock prototype in action.</figcaption></figure>
+          <figure class="reveal"><img src="assets/chi-poster-session.jpg" alt="Presenting the Watch-Out poster at CHI 2025" loading="lazy"><figcaption>Presenting at ACM CHI 2025, Yokohama — the session that won 1st place.</figcaption></figure>
+        </div>
+        <p class="doi">DOI: <a href="https://doi.org/10.1145/3706599.3720308" target="_blank" rel="noopener">10.1145/3706599.3720308</a> · <a href="https://doi.org/10.9708/jksci.2025.30.06.147" target="_blank" rel="noopener">10.9708/jksci.2025.30.06.147</a></p>
+        <div class="tags"><span>Embedded Control</span><span>Wearables</span><span>IoT</span><span>Patent</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" style="padding-top:60px">
+  <div class="wrap">
+    <span class="kicker reveal">Contact</span>
+    <h2 class="reveal">Let's build hardware that thinks ahead.</h2>
+    <p class="lead reveal">Prospective PhD student, Fall 2027 — computer architecture &amp; systems.</p>
+    <a class="btn btn-primary reveal" href="mailto:dchun4748@gmail.com">dchun4748@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Dawit Chun · Taejae University, Seoul · <a href="mailto:dchun4748@gmail.com">dchun4748@gmail.com</a></div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

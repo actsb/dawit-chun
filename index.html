@@ -8,202 +8,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>">
-<style>
-:root{
-  --ink:#171d26; --ink-soft:#4a5464; --paper:#f7f8f6; --card:#ffffff;
-  --slate:#0e1621; --slate-2:#152232; --copper:#d98e32; --copper-soft:#f0cfa2;
-  --cyan:#56b3c9; --green:#5cbf8a; --line:#e2e2da;
-  --shadow:0 10px 30px rgba(14,22,33,.08); --shadow-lg:0 18px 50px rgba(14,22,33,.15);
-  --r:16px; --max:1120px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:16.5px}
-h1,h2,h3,.serif{font-family:'Fraunces',Georgia,'Times New Roman',serif}
-a{color:#2e7d93;text-decoration:none}
-a:hover{text-decoration:underline}
-img{max-width:100%}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-section{padding:88px 0}
-.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);margin-bottom:14px}
-h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:600;letter-spacing:-.01em;margin-bottom:14px}
-.lead{color:var(--ink-soft);max-width:760px;font-size:1.06rem}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.on{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none} .trace{animation:none!important}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s;padding:18px 0}
-nav.scrolled{background:rgba(247,248,246,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line);padding:12px 0}
-nav .wrap{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:#fff;letter-spacing:.01em;transition:color .3s}
-nav.scrolled .logo{color:var(--ink)}
-.logo b{color:var(--copper)}
-.navlinks{display:flex;gap:26px;list-style:none}
-.navlinks a{font-size:.86rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);transition:color .3s}
-nav.scrolled .navlinks a{color:var(--ink-soft)}
-.navlinks a:hover{color:var(--copper);text-decoration:none}
-.menu-btn{display:none;background:none;border:0;cursor:pointer;width:34px;height:30px;position:relative}
-.menu-btn span{position:absolute;left:4px;right:4px;height:2.5px;border-radius:2px;background:#fff;transition:all .3s}
-nav.scrolled .menu-btn span{background:var(--ink)}
-.menu-btn span:nth-child(1){top:6px}.menu-btn span:nth-child(2){top:14px}.menu-btn span:nth-child(3){top:22px}
-@media(max-width:880px){
-  .menu-btn{display:block}
-  .navlinks{position:fixed;inset:0;background:var(--slate);flex-direction:column;align-items:center;justify-content:center;gap:34px;transform:translateY(-100%);visibility:hidden;opacity:0;transition:transform .35s ease,opacity .3s ease,visibility 0s .35s}
-  .navlinks.open{transform:none;visibility:visible;opacity:1;transition:transform .35s ease,opacity .3s ease,visibility 0s}
-  .navlinks a{font-size:1.15rem;color:#fff!important}
-}
-
-/* HERO */
-header{position:relative;background:linear-gradient(160deg,var(--slate) 0%,var(--slate-2) 58%,#1d3049 100%);color:#fff;overflow:hidden}
-.hero{position:relative;z-index:2;padding:170px 0 130px}
-.hero .hello{font-size:.95rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
-.hero h1{font-size:clamp(2.9rem,7vw,4.9rem);font-weight:600;line-height:1.04;letter-spacing:-.015em}
-.hero h1 em{font-style:italic;color:var(--copper-soft)}
-.hero .tag{margin-top:26px;font-size:clamp(1.05rem,2vw,1.3rem);max-width:660px;color:rgba(255,255,255,.86);font-weight:300}
-.hero .tag b{font-weight:600;color:#fff}
-.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.chip{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;padding:9px 16px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.07)}
-.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan)}
-.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
-.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s}
-.btn:hover{text-decoration:none;transform:translateY(-2px)}
-.btn-primary{background:var(--copper);color:#14100a;box-shadow:0 8px 24px rgba(217,142,50,.35)}
-.btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff}
-.circuit{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5}
-.trace{stroke-dasharray:640;stroke-dashoffset:640;animation:draw 6s ease forwards}
-.trace:nth-child(2){animation-delay:.7s}.trace:nth-child(3){animation-delay:1.3s}.trace:nth-child(4){animation-delay:1.9s}
-@keyframes draw{to{stroke-dashoffset:0}}
-.hero-bottom{position:absolute;left:0;right:0;bottom:-2px;z-index:1}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
-.about-text p{margin-bottom:18px;color:var(--ink-soft)}
-.about-text p b{color:var(--ink)}
-.factbox{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:30px}
-.factbox .me{width:150px;height:150px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 8px;border:4px solid var(--copper-soft);box-shadow:0 8px 22px rgba(217,142,50,.28)}
-.factbox .me-name{text-align:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin-bottom:2px}
-.factbox .me-sub{text-align:center;font-size:.8rem;color:var(--ink-soft);margin-bottom:18px}
-.factbox h3{font-size:1.05rem;margin-bottom:16px;color:var(--ink)}
-.fact{display:flex;gap:14px;padding:11px 0;border-top:1px solid var(--line);font-size:.92rem}
-.fact:first-of-type{border-top:0}
-.fact .k{min-width:112px;font-weight:700;color:var(--copper);font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;padding-top:2px}
-@media(max-width:880px){.about-grid{grid-template-columns:1fr}}
-
-/* THEMES */
-#themes{background:linear-gradient(180deg,#eef0ec,var(--paper))}
-.themes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:46px}
-.theme{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:34px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
-.theme:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.theme::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--tc,var(--copper))}
-.theme .ico{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--tc,var(--copper)) 12%,white);margin-bottom:18px}
-.theme .ico svg{width:27px;height:27px;stroke:var(--tc,var(--copper))}
-.theme h3{font-size:1.28rem;margin-bottom:10px}
-.theme p{color:var(--ink-soft);font-size:.95rem}
-.theme .rel{margin-top:16px;font-size:.8rem;font-weight:600;color:var(--tc,var(--copper));letter-spacing:.03em}
-@media(max-width:760px){.themes-grid{grid-template-columns:1fr}}
-
-/* PROJECTS */
-.proj{display:grid;grid-template-columns:200px 1fr;gap:34px;padding:44px 0;border-top:1px solid var(--line)}
-.proj:first-of-type{border-top:0}
-.proj .meta .venue{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--vc,#2e7d93);padding:6px 12px;border-radius:7px;margin-bottom:12px}
-.proj .meta .year{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--ink);display:block}
-.proj .meta .role{font-size:.82rem;color:var(--ink-soft);margin-top:4px}
-.proj h3{font-size:1.45rem;margin-bottom:6px}
-.proj h3 .award{font-size:.85rem;color:var(--copper);font-family:'Inter',sans-serif;font-weight:700;vertical-align:middle;margin-left:8px;white-space:nowrap}
-.proj .sub{font-style:italic;color:var(--ink-soft);font-size:.95rem;margin-bottom:14px}
-.proj p{color:var(--ink-soft);font-size:.97rem;margin-bottom:14px}
-.proj ul{list-style:none;margin-bottom:14px}
-.proj li{position:relative;padding-left:22px;margin-bottom:8px;color:var(--ink-soft);font-size:.93rem}
-.proj li::before{content:"—";position:absolute;left:0;color:var(--copper);font-weight:700}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags span{font-size:.74rem;font-weight:600;color:#2e7d93;background:#e5eff2;border-radius:6px;padding:4px 10px}
-.doi{font-size:.85rem;font-weight:600}
-.pfig{margin:2px 0 18px;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff}
-.pfig img,.pfig svg{display:block;width:100%;height:auto}
-.pfig figcaption{font-size:.78rem;color:var(--ink-soft);padding:9px 14px;background:#fcfcf9;border-top:1px solid var(--line)}
-@media(max-width:760px){.proj{grid-template-columns:1fr;gap:14px}}
-
-/* PUBS */
-#pubs{background:var(--slate);color:#fff}
-#pubs h2{color:#fff}
-#pubs .kicker{color:var(--cyan)}
-.pub{display:grid;grid-template-columns:54px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(255,255,255,.14)}
-.pub:first-of-type{border-top:0;margin-top:34px}
-.pub .num{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--copper-soft)}
-.pub .t{font-weight:600;font-size:1.02rem;margin-bottom:4px}
-.pub .a{font-size:.88rem;color:rgba(255,255,255,.75)}
-.pub .a b{color:#fff}
-.pub .v{font-size:.85rem;color:var(--cyan);margin-top:4px;font-weight:600}
-.pub a{color:#9fd6e4}
-.bookrow{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);font-size:.9rem;color:rgba(255,255,255,.75)}
-.bookrow b{color:#fff}
-
-/* JOURNEY */
-.timeline{position:relative;margin-top:52px;padding-left:36px}
-.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2.5px;background:linear-gradient(var(--copper),var(--cyan))}
-.tl{position:relative;padding-bottom:38px}
-.tl:last-child{padding-bottom:0}
-.tl::before{content:"";position:absolute;left:-33px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:3.5px solid var(--copper)}
-.tl.alt::before{border-color:var(--cyan)}
-.tl .yr{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;color:var(--copper)}
-.tl.alt .yr{color:#2e7d93}
-.tl h4{font-size:1.06rem;margin:3px 0 5px}
-.tl p{color:var(--ink-soft);font-size:.92rem;max-width:640px}
-.tlfig{margin-top:14px;max-width:340px;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
-.tlfig img{display:block;width:100%}
-.tlfig figcaption{font-size:.75rem;color:var(--ink-soft);padding:8px 12px;background:#fcfcf9;border-top:1px solid var(--line)}
-
-/* HONORS */
-#honors{background:linear-gradient(180deg,#eef0ec,var(--paper))}
-.honor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
-.honor{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
-.honor .hy{font-size:.78rem;font-weight:700;color:var(--copper);letter-spacing:.06em}
-.honor h4{font-size:1.02rem;margin:6px 0 4px}
-.honor p{font-size:.85rem;color:var(--ink-soft)}
-@media(max-width:880px){.honor-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.honor-grid{grid-template-columns:1fr}}
-
-/* SERVICE */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:46px}
-.svc{border-left:3px solid var(--copper);padding:4px 0 4px 22px}
-.svc h4{font-size:1.05rem;margin-bottom:6px}
-.svc p{font-size:.9rem;color:var(--ink-soft)}
-.svc .n{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;color:var(--copper);display:block;margin-bottom:4px}
-@media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
-
-/* CONTACT */
-#contact{background:var(--slate);color:#fff;text-align:center}
-#contact .kicker{color:var(--cyan)}
-#contact h2{color:#fff}
-#contact .lead{margin:0 auto 36px;color:rgba(255,255,255,.8)}
-#contact .btn-primary{font-size:1.05rem;padding:16px 34px}
-#contact .links{margin-top:26px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-size:.95rem}
-#contact .links a{color:#9fd6e4;font-weight:600}
-footer{background:#0a111b;color:rgba(255,255,255,.55);text-align:center;padding:26px 0;font-size:.82rem}
-footer a{color:rgba(255,255,255,.75)}
-</style>
 </head>
 <body>
 
 <nav id="nav">
   <div class="wrap">
-    <a class="logo" href="#top">Dawit <b>Chun</b></a>
+    <a class="logo" href="index.html">Dawit <b>Chun</b></a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="navlinks" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#themes">Research</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#pubs">Publications</a></li>
-      <li><a href="#journey">Journey</a></li>
-      <li><a href="#honors">Honors</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="journey.html">Journey &amp; Honors</a></li>
+      <li><a href="service.html">Teaching &amp; Service</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
 <header id="top">
   <svg class="circuit" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none">
     <path class="trace" d="M-20,120 H320 L380,180 H640" stroke="#d98e32" stroke-width="2.5"/>
@@ -224,9 +48,9 @@ footer a{color:rgba(255,255,255,.75)}
       <span class="chip"><span class="dot"></span>Entered university at 15 · GPA 4.45/4.5 · GRE 328</span>
     </div>
     <div class="cta">
-      <a class="btn btn-primary" href="mailto:dchun4748@gmail.com">Get in touch</a>
+      <a class="btn btn-primary" href="research.html">Explore my research →</a>
+      <a class="btn btn-ghost" href="mailto:dchun4748@gmail.com">Get in touch</a>
       <a class="btn btn-ghost" href="https://github.com/da-dawit" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="#projects">See my work ↓</a>
     </div>
   </div>
   <svg class="hero-bottom" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
@@ -234,7 +58,6 @@ footer a{color:rgba(255,255,255,.75)}
   </svg>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="wrap">
     <div class="about-grid">
@@ -260,348 +83,46 @@ footer a{color:rgba(255,255,255,.75)}
   </div>
 </section>
 
-<!-- THEMES -->
-<section id="themes">
+<section id="themes" style="padding-top:60px">
   <div class="wrap">
-    <span class="kicker reveal">Research Themes</span>
-    <h2 class="reveal">Four threads, one machine</h2>
-    <p class="lead reveal">Everything I build serves one question: how can hardware observe its workload, predict what comes next, and reconfigure itself — efficiently enough to be worth it?</p>
+    <span class="kicker reveal">Explore</span>
+    <h2 class="reveal">Four research threads — and where to read more</h2>
+    <p class="lead reveal">Everything I build serves one question: how can hardware observe its workload, predict what comes next, and reconfigure itself? Click any card for the full research page.</p>
     <div class="themes-grid">
-      <div class="theme reveal" style="--tc:#d98e32">
+      <a class="cardlink" href="research.html#pdpm"><div class="theme reveal" style="--tc:#d98e32">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v-2M15 4v-2M9 22v-2M15 22v-2M4 9h-2M4 15h-2M22 9h-2M22 15h-2"/><rect x="9" y="9" width="6" height="6"/></svg></div>
         <h3>Adaptive Microarchitecture</h3>
-        <p>Pipeline depth, clocking, and structure as runtime variables rather than design-time constants — processors that morph to match their workload, phase by phase.</p>
+        <p>Pipeline depth, clocking, and structure as runtime variables — processors that morph to match their workload, phase by phase.</p>
         <div class="rel">→ PDPM (IEEE ICCD 2026, in submission)</div>
-      </div>
-      <div class="theme reveal" style="--tc:#2e7d93">
+      </div></a>
+      <a class="cardlink" href="research.html#ml"><div class="theme reveal" style="--tc:#2e7d93">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="6"/><path d="M12 9a3 3 0 1 0 3 3"/></svg></div>
         <h3>ML for Hardware · Hardware for ML</h3>
-        <p>Learning inside the machine: int8 perceptrons living on-chip in tens of LUTs, steering microarchitectural decisions — and the accelerators that make ML itself efficient.</p>
+        <p>Learning inside the machine: int8 perceptrons living on-chip in tens of LUTs — and the accelerators that make ML itself efficient.</p>
         <div class="rel">→ PDPM predictor · edge-AI systems</div>
-      </div>
-      <div class="theme reveal" style="--tc:#5cbf8a">
+      </div></a>
+      <a class="cardlink" href="research.html#fpga"><div class="theme reveal" style="--tc:#5cbf8a">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg></div>
         <h3>Reconfigurable Computing &amp; FPGA</h3>
-        <p>Fluent in both the open-source flow (Yosys, nextpnr, icetime) and Vivado — timing closure, resource analysis, and agile iteration on real silicon fabric.</p>
+        <p>Fluent in the open-source flow (Yosys, nextpnr) and Vivado — timing closure and agile iteration on real fabric.</p>
         <div class="rel">→ iCE40 UP5K · Artix-7 XC7A100T</div>
-      </div>
-      <div class="theme reveal" style="--tc:#8a63b8">
+      </div></a>
+      <a class="cardlink" href="research.html#robotics"><div class="theme reveal" style="--tc:#8a63b8">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="M4.5 17H3v-5l3-5h8l4 5h3v5h-1.5M9.5 17h5"/></svg></div>
         <h3>Robotics &amp; Autonomous Systems</h3>
-        <p>Where architecture meets the physical world: autonomous-vehicle hardware, perception pipelines, motion planning, and embedded AI platforms built down to the PCB.</p>
+        <p>Where architecture meets the physical world: vehicle hardware, perception pipelines, and embedded AI down to the PCB.</p>
         <div class="rel">→ Ubion internship · SNU DYROS · IRO Gold</div>
-      </div>
+      </div></a>
+    </div>
+
+    <div class="hl-strip">
+      <a class="cardlink" href="journey.html"><div class="hl reveal"><div class="t">🏆 Journey &amp; Honors</div><p>KAIST President's Award at 13 → Talent Award of Korea at 17 — the full timeline with photos, medals, and Oxford.</p></div></a>
+      <a class="cardlink" href="service.html"><div class="hl reveal"><div class="t">🌏 Teaching &amp; Service</div><p>Two summers teaching STEM in Cambodia, TA for two courses, and 643 volunteer hours — in pictures.</p></div></a>
+      <a class="cardlink" href="publications.html"><div class="hl reveal"><div class="t">📄 Publications</div><p>ICCD submission, arXiv preprint, CHI &amp; JKSCI papers, a patent, and books.</p></div></a>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <span class="kicker reveal">Featured Projects</span>
-    <h2 class="reveal">Selected work, 2023 — 2026</h2>
-
-    <div class="proj reveal">
-      <div class="meta">
-        <span class="venue" style="--vc:#d98e32;color:#14100a">IEEE ICCD 2026</span>
-        <span class="year">2026</span>
-        <span class="role">First author · in submission</span>
-      </div>
-      <div>
-        <h3>PDPM — Perceptron-Driven Pipeline Morphing <span class="award">⚙️ flagship work</span></h3>
-        <p class="sub">A morphable RISC-V processor that reconfigures its pipeline depth at runtime, steered by an online-learned predictor</p>
-        <figure class="pfig">
-          <svg viewBox="0 0 1200 240" role="img" aria-label="Diagram of a pipeline morphing between seven, five, and three stages">
-            <rect width="1200" height="240" fill="#0e1621"/>
-            <g font-family="Inter,sans-serif" font-size="15" fill="#8fa3bb">
-              <text x="30" y="46">P7 · max clock 1.5×</text><text x="30" y="116">P5 · 1.3×</text><text x="30" y="186">P3 · 1.1×</text>
-            </g>
-            <g>
-              <rect x="210" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="310" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="410" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="510" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="610" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="710" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/><rect x="810" y="26" width="90" height="30" rx="5" fill="#1d3049" stroke="#56b3c9" stroke-width="1.5"/>
-              <rect x="210" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="335" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="460" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="585" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/><rect x="710" y="96" width="90" height="30" rx="5" fill="#1d3049" stroke="#5cbf8a" stroke-width="1.5"/>
-              <rect x="210" y="166" width="90" height="30" rx="5" fill="#1d3049" stroke="#d98e32" stroke-width="1.8"/><rect x="410" y="166" width="90" height="30" rx="5" fill="#1d3049" stroke="#d98e32" stroke-width="1.8"/><rect x="610" y="166" width="90" height="30" rx="5" fill="#1d3049" stroke="#d98e32" stroke-width="1.8"/>
-            </g>
-            <g stroke="#d98e32" stroke-width="2" fill="none" opacity=".7">
-              <path d="M950,41 C1010,41 1010,111 950,111" marker-end="none"/>
-              <path d="M950,111 C1010,111 1010,181 950,181"/>
-            </g>
-            <g font-family="Georgia,serif" font-style="italic" font-size="19" fill="#f0cfa2">
-              <text x="960" y="60">a 10-weight perceptron</text><text x="960" y="86">chooses the depth,</text><text x="960" y="112">every 200 instructions</text>
-            </g>
-            <text x="960" y="196" font-family="Inter,sans-serif" font-size="15" fill="#8fa3bb">94.28% accuracy · +0.107% overhead</text>
-          </svg>
-          <figcaption>The idea, drawn: one superset datapath, three pipeline depths. Bypass multiplexers morph the machine; an on-chip learned regressor picks the winning (depth, clock) point. (Original paper figures withheld during double-blind review.)</figcaption>
-        </figure>
-        <p>Pipeline depth is fixed at design time — but the optimal depth changes with the workload, and even between phases of one program. PDPM makes it a runtime variable.</p>
-        <ul>
-          <li>Morphable RV32IM superset datapath: 3/5/7-stage modes via bypass multiplexers, with mode-appropriate clock scaling — 12 valid (depth, clock) configurations</li>
-          <li>Key insight: dominated clock points collapse the decision to 3 choices, so a 2-output cycle-ratio regressor (10 int8 weights, ~40 LUTs) replaces a 12-class classifier — and wins on every metric</li>
-          <li>94.28% ± 2.48% configuration accuracy at +0.107% overhead across 301 benchmarks under nested 5-fold cross-validation; matches a per-phase oracle within +0.1% on six multi-phase workloads</li>
-          <li>~4,000 lines of Verilog, 15 modules; validated on Lattice iCE40 UP5K (Yosys/nextpnr) and Xilinx Artix-7 (Vivado); predictor adds &lt;1% logic</li>
-        </ul>
-        <div class="tags"><span>RISC-V</span><span>Verilog</span><span>Online Learning</span><span>FPGA</span><span>Microarchitecture</span></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="meta">
-        <span class="venue" style="--vc:#8a63b8">arXiv Preprint</span>
-        <span class="year">2026</span>
-        <span class="role">Equal-contribution first author</span>
-      </div>
-      <div>
-        <h3>iPhoneme — Brain-to-Text Communication for ALS</h3>
-        <p class="sub">A ConformerXL neural decoder translating brain activity into text (arXiv:2604.16441)</p>
-        <figure class="pfig">
-          <svg viewBox="0 0 1200 200" role="img" aria-label="Neural signals decoded into phonemes and text">
-            <rect width="1200" height="200" fill="#f3eff8"/>
-            <path d="M60,100 C80,60 95,140 115,100 C135,60 150,140 170,100 C190,64 205,136 225,100" fill="none" stroke="#8a63b8" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M270,100 h60 m24,0 h60" stroke="#8a63b8" stroke-width="2.5" stroke-dasharray="8 8"/>
-            <g font-family="Georgia,serif" font-size="24" fill="#5d4382">
-              <text x="480" y="82">/h/ /ɛ/ /l/ /oʊ/</text>
-            </g>
-            <path d="M700,74 h56 m0,0 l-12,-9 m12,9 l-12,9" stroke="#8a63b8" stroke-width="2.5" fill="none"/>
-            <text x="800" y="86" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#171d26">&#8220;hello&#8221;</text>
-            <text x="480" y="150" font-family="Inter,sans-serif" font-size="16" fill="#4a5464">ConformerXL sequence decoding &#183; restoring speech for people with ALS</text>
-          </svg>
-          <figcaption>From neural activity to phonemes to words — my bridge between hardware-grade ML engineering and assistive communication.</figcaption>
-        </figure>
-        <ul>
-          <li>ConformerXL architecture for neural sequence decoding, applied to brain-to-text for people with ALS</li>
-          <li>Model architecture and decoding pipeline as equal-contribution first author (with Y. Cha, S.J. Park)</li>
-        </ul>
-        <p class="doi">arXiv: <a href="https://doi.org/10.48550/arXiv.2604.16441" target="_blank" rel="noopener">10.48550/arXiv.2604.16441</a></p>
-        <div class="tags"><span>BCI</span><span>Conformer</span><span>Sequence Decoding</span><span>Assistive Tech</span></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="meta">
-        <span class="venue" style="--vc:#2e7d93">Industry R&amp;D</span>
-        <span class="year">2024–25</span>
-        <span class="role">Research Intern, Ubion Corp.</span>
-      </div>
-      <div>
-        <h3>Autonomous-Vehicle Hardware &amp; the DeepCo Board</h3>
-        <p class="sub">Eight months of end-to-end hardware engineering — from PCB layout to a product demonstrated at COEX 2025</p>
-        <figure class="pfig">
-          <svg viewBox="0 0 1200 200" role="img" aria-label="Autonomous vehicle with sensor arcs beside a circuit board">
-            <rect width="1200" height="200" fill="#e9f2f0"/>
-            <g stroke="#171d26" stroke-width="3.5" fill="none" stroke-linejoin="round">
-              <path d="M120,138 L150,100 L260,100 L300,138 Z M100,138 H320"/>
-              <circle cx="160" cy="146" r="14"/><circle cx="270" cy="146" r="14"/>
-            </g>
-            <g stroke="#2e7d93" stroke-width="3" fill="none" stroke-linecap="round">
-              <path d="M330,96 C342,108 342,128 330,140"/><path d="M352,84 C372,104 372,132 352,152"/><path d="M374,72 C402,100 402,136 374,164"/>
-            </g>
-            <g transform="translate(560,40)">
-              <rect x="0" y="0" width="220" height="120" rx="10" fill="#10402e" opacity=".92"/>
-              <rect x="26" y="26" width="52" height="52" rx="6" fill="#0a2a1e" stroke="#5cbf8a" stroke-width="2"/>
-              <g stroke="#5cbf8a" stroke-width="2"><path d="M100,36 h60 M100,52 h84 M100,68 h48 M100,84 h72" fill="none"/></g>
-              <g fill="#d98e32"><circle cx="190" cy="30" r="4"/><circle cx="190" cy="50" r="4"/><circle cx="190" cy="70" r="4"/></g>
-            </g>
-            <text x="830" y="86" font-family="Georgia,serif" font-style="italic" font-size="21" fill="#2e7d93">vision &#183; servo control &#183; custom PCB</text>
-            <text x="830" y="120" font-family="Inter,sans-serif" font-size="15" fill="#4a5464">YOLO &#183; CNN regression &#183; ESP32 &#183; Pi 5</text>
-          </svg>
-          <figcaption>Two builds: a redesigned autonomous vehicle platform, and the DeepCo Board — an ESP32 AI-IoT education platform with on-board vision and audio.</figcaption>
-        </figure>
-        <ul>
-          <li>Redesigned autonomous-vehicle hardware end-to-end: PCB layout, servo-motor integration, chassis; migrated compute from Raspberry Pi 4 to Pi 5</li>
-          <li>Implemented YOLO and 2D-CNN regression perception (TensorFlow/OpenCV/MediaPipe) with variable-angle servo control</li>
-          <li>Designed the "DeepCo Board" — ESP32-based AI-IoT education platform with custom PCB and mobile-app deployment tools; demonstrated at COEX Education Fair 2025</li>
-        </ul>
-        <div class="tags"><span>PCB Design</span><span>Computer Vision</span><span>ESP32</span><span>Autonomous Driving</span></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="meta">
-        <span class="venue" style="--vc:#5cbf8a;color:#0a2a1e">Robotics</span>
-        <span class="year">2023–25</span>
-        <span class="role">SNU DYROS · IRO medalist</span>
-      </div>
-      <div>
-        <h3>Robotics &amp; Autonomous Driving</h3>
-        <p class="sub">From competition podiums to Seoul National University's robotics bootcamp</p>
-        <ul>
-          <li>Gold Medal (2025) &amp; Silver Medal (2024), International Robot Olympiad — Autonomous Driving; five IRO medals total, 2023–25</li>
-          <li>Selected into SNU's DYROS Robotics Bootcamp (Aug 2025): control algorithms, motion planning, ROS, inverse kinematics, actuator control</li>
-          <li>KAIST AI &amp; Data Science Masterclass (DICIA track, A+): advanced computer vision and reinforcement learning</li>
-        </ul>
-        <div class="tags"><span>ROS</span><span>Motion Planning</span><span>Inverse Kinematics</span><span>Reinforcement Learning</span></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="meta">
-        <span class="venue" style="--vc:#8a63b8">Applied Physics</span>
-        <span class="year">2025–26</span>
-        <span class="role">Coursework research</span>
-      </div>
-      <div>
-        <h3>Semiconductors, Thermodynamics &amp; Vision</h3>
-        <p class="sub">The physics grounding beneath the hardware</p>
-        <figure class="pfig">
-          <svg viewBox="0 0 1200 200" role="img" aria-label="Semiconductor band diagram with a controlled bandgap">
-            <rect width="1200" height="200" fill="#fdf6ec"/>
-            <g>
-              <rect x="90" y="36" width="300" height="34" rx="6" fill="#d98e32" opacity=".82"/>
-              <rect x="90" y="132" width="300" height="34" rx="6" fill="#2e7d93" opacity=".82"/>
-              <path d="M240,74 v54" stroke="#171d26" stroke-width="2.5" marker-start="none"/>
-              <path d="M240,74 l-7,12 h14 Z M240,128 l-7,-12 h14 Z" fill="#171d26"/>
-              <text x="258" y="107" font-family="Georgia,serif" font-style="italic" font-size="19" fill="#171d26">E&#8342;</text>
-            </g>
-            <g>
-              <rect x="520" y="36" width="140" height="130" rx="6" fill="#d98e32" opacity=".55"/>
-              <rect x="668" y="36" width="140" height="130" rx="6" fill="#2e7d93" opacity=".5"/>
-              <text x="524" y="26" font-family="Inter,sans-serif" font-size="14" fill="#4a5464">tandem junction — two gaps, one cell</text>
-            </g>
-            <text x="880" y="88" font-family="Georgia,serif" font-style="italic" font-size="20" fill="#b0652f">imperfections,</text>
-            <text x="880" y="116" font-family="Georgia,serif" font-style="italic" font-size="20" fill="#b0652f">used on purpose</text>
-          </svg>
-          <figcaption>Band-engineering studies: tandem bandgap design, and using material imperfections themselves as a bandgap control knob.</figcaption>
-        </figure>
-        <ul>
-          <li>Tandem-bandgap semiconductor design; using material imperfections as bandgap control</li>
-          <li>Thermodynamic optimization of the F-35 XA100 adaptive-cycle engine architecture</li>
-          <li>Computer vision: Generalized Hough Transform improvements; Engageli eye-tracker analysis</li>
-        </ul>
-        <div class="tags"><span>Semiconductor Physics</span><span>Thermodynamics</span><span>Computer Vision</span></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="meta">
-        <span class="venue" style="--vc:#b0652f">Published Systems</span>
-        <span class="year">2023–25</span>
-        <span class="role">Co-author · patent filed</span>
-      </div>
-      <div>
-        <h3>Shared Systems Work — CHI 2025 &amp; the Smart Disaster Window</h3>
-        <p class="sub">Award-winning systems built with my sister and collaborators</p>
-        <ul>
-          <li>Watch-Out (ACM CHI 2025 EA): co-first-author of the wearable Alzheimer's-assistance system — 🏆 1st Place, Student Design Competition, Yokohama</li>
-          <li>Smart IoT Security/Disaster Window (JKSCI 30(6) &amp; 30(4), 2025 — Excellence Paper Award): embedded control and the 5-second rapid-actuation mechanism; Korean patent application 10-2026-0029503</li>
-          <li>IoT Hydroelectric Shower Module (Korea Association for Science and Creativity, 2023)</li>
-        </ul>
-        <p class="doi">DOI: <a href="https://doi.org/10.1145/3706599.3720308" target="_blank" rel="noopener">10.1145/3706599.3720308</a> · <a href="https://doi.org/10.9708/jksci.2025.30.06.147" target="_blank" rel="noopener">10.9708/jksci.2025.30.06.147</a></p>
-        <div class="tags"><span>Embedded Control</span><span>Wearables</span><span>IoT</span><span>Patent</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="pubs">
-  <div class="wrap">
-    <span class="kicker reveal">Publications</span>
-    <h2 class="reveal">Papers, preprints &amp; patents</h2>
-    <div class="pub reveal">
-      <div class="num">01</div>
-      <div>
-        <div class="t">PDPM: A Morphable RISC-V Pipeline with Perceptron-Based Depth Prediction</div>
-        <div class="a"><b>Dawit Chun</b>, Minsu Jun</div>
-        <div class="v">IEEE International Conference on Computer Design (ICCD) 2026 — in submission</div>
-      </div>
-    </div>
-    <div class="pub reveal">
-      <div class="num">02</div>
-      <div>
-        <div class="t">iPhoneme: Brain-to-Text Communication for ALS Using ConformerXL Decoding</div>
-        <div class="a"><b>Dawit Chun</b>*, Yoonmin Cha*, Sung Jun Park (*equal contribution)</div>
-        <div class="v">arXiv:2604.16441, 2026 · <a href="https://doi.org/10.48550/arXiv.2604.16441" target="_blank" rel="noopener">doi:10.48550/arXiv.2604.16441</a></div>
-      </div>
-    </div>
-    <div class="pub reveal">
-      <div class="num">03</div>
-      <div>
-        <div class="t">Watch-Out: Real-Time Tracking and Assistance for Wandering Alzheimer's Patients</div>
-        <div class="a">Dahee Chun, <b>Dawit Chun</b>, Yoonmin Cha, Lina Jellibi, Sung Jun Park</div>
-        <div class="v">ACM CHI 2025 Extended Abstracts — 🏆 1st Place, Student Design Competition · <a href="https://doi.org/10.1145/3706599.3720308" target="_blank" rel="noopener">doi:10.1145/3706599.3720308</a></div>
-      </div>
-    </div>
-    <div class="pub reveal">
-      <div class="num">04</div>
-      <div>
-        <div class="t">AI-Driven Smart IoT Security Window Optimization System for Disaster Response</div>
-        <div class="a"><b>Dawit Chun</b>, Dahee Chun, Woohyeon Hwang</div>
-        <div class="v">JKSCI 30(6), 2025 · <a href="https://doi.org/10.9708/jksci.2025.30.06.147" target="_blank" rel="noopener">doi:10.9708/jksci.2025.30.06.147</a></div>
-      </div>
-    </div>
-    <div class="pub reveal">
-      <div class="num">05</div>
-      <div>
-        <div class="t">Smart Emergency Window System for Rapid Evacuation in Disasters</div>
-        <div class="a">Dahee Chun, <b>Dawit Chun</b>, Woohyeon Hwang</div>
-        <div class="v">JKSCI 30(4), 2025 — Excellence Paper Award · <a href="https://doi.org/10.9708/jksci.2025.30.04.093" target="_blank" rel="noopener">doi:10.9708/jksci.2025.30.04.093</a></div>
-      </div>
-    </div>
-    <div class="pub reveal">
-      <div class="num">06</div>
-      <div>
-        <div class="t">AI-Based Integrated Smart Security Window and Automatic Control System</div>
-        <div class="a"><b>Dawit Chun</b>, Dahee Chun, Woohyeon Hwang</div>
-        <div class="v">Korean Patent Application 10-2026-0029503, filed Feb 2026</div>
-      </div>
-    </div>
-    <div class="bookrow reveal">
-      <b>Books (co-author):</b> Youth Conversations on Sustainable Development (Office for Government Policy Coordination, 2025) · ChatGPT: Practical AI for the Classroom (2024, ISBN 9788970930084)
-    </div>
-  </div>
-</section>
-
-<!-- JOURNEY -->
-<section id="journey">
-  <div class="wrap">
-    <span class="kicker reveal">Journey</span>
-    <h2 class="reveal">From a president's award to a processor — in five years</h2>
-    <div class="timeline">
-      <div class="tl reveal"><span class="yr">2021</span><h4>KAIST President's Award, age 13</h4><p>Early recognition in Korea's gifted-education track — the start of taking hardware seriously.</p></div>
-      <div class="tl alt reveal"><span class="yr">2022</span><h4>National gold · first hackathon win · teaching abroad</h4><p>Gold Prize, KSME National Student Design &amp; Engineering Competition. 1st Place, Geumcheon Hackathon. First summer teaching Arduino and C to 30 Cambodian science teachers (KOICA).</p></div>
-      <div class="tl reveal"><span class="yr">2023</span><h4>University at 15</h4><p>Admitted to Taejae University's inaugural cohort — youngest student, top entrance score. Gold Prize at the Aramco World Coding Cup. Selected into KAIST's DICIA masterclass (A+). Visiting student in bioinformatics at UNIST.</p></div>
-      <div class="tl alt reveal"><span class="yr">2024</span><h4>Research gears engage</h4><p>Silver Medal, International Robot Olympiad Autonomous Driving. Excellence Paper Award, KSCI Winter Conference. Co-authored ChatGPT: Practical AI for the Classroom. Began the Ubion research internship (Dec).</p></div>
-      <div class="tl reveal"><span class="yr">2025</span><h4>The big year</h4><p>🏆 1st Place worldwide, ACM CHI Student Design Competition. Talent Award of Korea — top 50 nationwide, entire 200M KRW prize donated. Gold Medal, IRO Autonomous Driving. Oxford-Stanford-Taejae Fellowship (1st in the AI Policy Debate; presented to Korea's Deputy Prime Minister). SNU DYROS bootcamp. Vice Student Body President. DeepCo Board demonstrated at COEX.</p>
-        <figure class="tlfig"><img src="assets/chatham.jpg" alt="Dawit Chun at Chatham House, London, during the Oxford fellowship" loading="lazy"><figcaption>At Chatham House, London — Oxford-Stanford-Taejae Fellowship, 2025.</figcaption></figure>
-      </div>
-      <div class="tl alt reveal"><span class="yr">2026</span><h4>The processor ships</h4><p>PDPM submitted to IEEE ICCD 2026 (first author). iPhoneme brain-to-text preprint on arXiv. Patent application filed. TA for two courses. Preparing PhD applications for Fall 2027.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- HONORS -->
-<section id="honors">
-  <div class="wrap">
-    <span class="kicker reveal">Honors &amp; Awards</span>
-    <h2 class="reveal">Recognition along the way</h2>
-    <div class="honor-grid">
-      <div class="honor reveal"><div class="hy">2025 · NATIONAL</div><h4>🇰🇷 Talent Award of Korea — Top 50 Nationwide</h4><p>Ministry of Education (~0.0002% selection); 200M KRW prize donated in full to a scholarship foundation</p></div>
-      <div class="honor reveal"><div class="hy">2025 · INTERNATIONAL</div><h4>🏆 ACM CHI Student Design Competition — 1st Place</h4><p>World's premier HCI conference, Yokohama</p></div>
-      <div class="honor reveal"><div class="hy">2025 · INTERNATIONAL</div><h4>Oxford-Stanford-Taejae AI Policy Debate — 1st Place</h4><p>Prize donated to WWF; work presented to Korea's Deputy Prime Minister</p></div>
-      <div class="honor reveal"><div class="hy">2025 / 2024 · INTERNATIONAL</div><h4>International Robot Olympiad — Gold &amp; Silver</h4><p>Autonomous Driving; five IRO medals total 2023–25</p></div>
-      <div class="honor reveal"><div class="hy">2024 · NATIONAL</div><h4>KSCI Winter Conference — Excellence Paper Award</h4><p>Korea Society of Computer and Information</p></div>
-      <div class="honor reveal"><div class="hy">2023 · INTERNATIONAL</div><h4>Aramco World Coding Cup — Gold · Hackathon 2nd</h4><p>International programming competition</p></div>
-      <div class="honor reveal"><div class="hy">2022 · NATIONAL</div><h4>KSME National Student Design — Gold Prize</h4><p>Korean Society of Mechanical Engineers (Bronze, 2023)</p></div>
-      <div class="honor reveal"><div class="hy">2022 · REGIONAL</div><h4>Geumcheon Hackathon — 1st Place</h4><p>First hackathon victory, age 14</p></div>
-      <div class="honor reveal"><div class="hy">2021 · NATIONAL</div><h4>KAIST President's Award</h4><p>Gifted-education recognition, age 13</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICE -->
-<section id="service">
-  <div class="wrap">
-    <span class="kicker reveal">Teaching &amp; Service</span>
-    <h2 class="reveal">Passing it on</h2>
-    <div class="svc-grid">
-      <div class="svc reveal"><span class="n">2</span><h4>Courses as Teaching Assistant</h4><p>NS200 Physics in Modern Society &amp; XD221 Quantitative Thinking (Fall 2025, Spring 2026) — weekly sessions, problem sets, and beyond-curriculum lectures connecting AI and electronics to math and physics.</p></div>
-      <div class="svc reveal"><span class="n">192h</span><h4>STEM Instructor, Cambodia</h4><p>Two summers in Phnom Penh (KOICA / Korea Productivity Center) teaching Arduino, 3D modeling, and C programming to 30 high-school science teachers.</p></div>
-      <div class="svc reveal"><span class="n">643h</span><h4>Total Volunteer Hours</h4><p>Translation services (145 h) · weekly meal delivery to elderly residents (195 h) · amphibian conservation (69 h) · science classroom support (42 h) · Cambodia teaching (192 h).</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <span class="kicker reveal">Contact</span>
@@ -620,15 +141,6 @@ footer a{color:rgba(255,255,255,.75)}
   <div class="wrap">© 2026 Dawit Chun · Taejae University, Seoul · <a href="mailto:dchun4748@gmail.com">dchun4748@gmail.com</a></div>
 </footer>
 
-<script>
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
-nav.classList.toggle('scrolled',scrollY>40);
-const btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
-btn.addEventListener('click',()=>links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+<script src="site.js"></script>
 </body>
 </html>
