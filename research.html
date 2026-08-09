@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research — Dawit Chun</title>
-<meta name="description" content="Dawit Chun's research: adaptive RISC-V microarchitecture (PDPM, IEEE ICCD 2026 submission), brain-to-text decoding, autonomous-vehicle hardware, and semiconductor physics.">
+<title>Research — Dawit Chun · Physical AI &amp; Robot Learning</title>
+<meta name="description" content="Dawit Chun's research: VLA and world-model benchmarking on real manipulators at ROBOTIS, the Prior-ACT imitation model, IGEN robot RL, an adaptive RISC-V processor (IEEE ICCD 2026), and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,13 +31,79 @@
 <div class="page-hero">
   <div class="wrap">
     <span class="kicker">Research</span>
-    <h1>Six projects, one question:<br>can hardware adapt to its workload?</h1>
-    <p>A morphable RISC-V processor with learning on-chip · brain-to-text decoding for ALS · autonomous-vehicle hardware built to the PCB · and the physics underneath it all.</p>
+    <h1>From frontier VLA models<br>to the silicon underneath.</h1>
+    <p>SOTA robot policies benchmarked on real arms at ROBOTIS · a new scene-prior imitation model · a parent-child RL algorithm · and a first-author adaptive processor. Physical AI, full stack.</p>
   </div>
 </div>
 
 <section id="projects">
   <div class="wrap">
+
+    <div class="proj reveal" id="omy">
+      <div class="meta">
+        <span class="venue" style="--vc:#d98e32;color:#14100a">ROBOTIS</span>
+        <span class="year">2026</span>
+        <span class="role">Humanoid Software Team · Jun–Aug 2026</span>
+      </div>
+      <div>
+        <h3>OMY × 2026 SOTA — Benchmarking Frontier VLA &amp; World Models on a Real Arm <span class="award">🤖 flagship work</span></h3>
+        <p class="sub">Five state-of-the-art policies, one 6-DoF OpenManipulator-Y, and every engineering problem between a checkpoint and a working robot</p>
+        <figure class="pfig">
+          <img src="assets/omy-setup.jpg" alt="The OMY manipulation rig at ROBOTIS: 6-DoF arm, three cameras, and the three-plate organization task" loading="lazy">
+          <figcaption>My experimental rig at ROBOTIS — OpenManipulator-Y, three cameras, and the 3-plate organization task I designed for the benchmark.</figcaption>
+        </figure>
+        <p>I designed the task, collected the data (100 teleop episodes, 3 cameras), fine-tuned five 2026 frontier models on H100/A100 cloud GPUs, and evaluated them on the physical arm: <b>GR00T N1.7 (NVIDIA), MolmoAct2 (Ai2), VLA-JEPA, FastWAM, and LingBot-VA</b>.</p>
+        <ul>
+          <li>Best model: GR00T N1.7 at ~80% success — then I attacked its failure modes: start-stop hesitation, off-workspace attention, chunk-seam jitter</li>
+          <li><b>ROI token pruning:</b> cut image-patch tokens outside the fixed workspace — attention cleaned up at ≤10 ms added latency (keep-mask built once, cached)</li>
+          <li><b>Trajectory smoothing:</b> Savitzky-Golay seam filters between action chunks, age-weighted smooth-chunk ensembling, RTC-logic fixes, sync/async action queues</li>
+          <li>Technical story + inference pipeline contributed upstream — <a href="https://github.com/ROBOTIS-GIT/docs/pulls?q=is%3Apr" target="_blank" rel="noopener">PR to ROBOTIS-GIT/docs</a> (feature-omy-vlamodels-inference)</li>
+        </ul>
+        <div class="tags"><span>VLA</span><span>World Models</span><span>GR00T</span><span>Token Pruning</span><span>LeRobot</span><span>ROS 2</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" id="prioract">
+      <div class="meta">
+        <span class="venue" style="--vc:#2e7d93">ROBOTIS</span>
+        <span class="year">2026</span>
+        <span class="role">New model development</span>
+      </div>
+      <div>
+        <h3>Prior-ACT — Scene-Prior Imitation Learning on OMX</h3>
+        <p class="sub">A newly developed ACT variant: a frozen DINOv2 scene prior seeds the CVAE latent, steering the policy before it acts</p>
+        <p>On a drawer-manipulation study (OpenManipulator-X, 150 demonstrations, three drawers), I built and compared new policy architectures against vanilla ACT:</p>
+        <ul>
+          <li><b>Prior-ACT (mine):</b> DINOv2 looks at the image and predicts the CVAE latent that the action encoder would have produced — a scene-seeded prior at inference. Replay MAE 1.45–1.93% of joint range vs. 3.22% for vanilla ACT</li>
+          <li><b>MoE-Diffusion:</b> hierarchical diffusion with phase-adaptive LoRA specialists (reach/grasp/open/place) — built, trained, and honestly diagnosed: visual phase detection confused drawer-pulls with reaches</li>
+          <li>Also shipped: an auto-porting port-identifier tool for OMX setup (device detection, camera indices, calibration guards) with docs and upstream PR</li>
+        </ul>
+        <div class="tags"><span>Imitation Learning</span><span>ACT</span><span>DINOv2</span><span>CVAE</span><span>Diffusion Policy</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" id="igen">
+      <div class="meta">
+        <span class="venue" style="--vc:#8a63b8">ROBOTIS · ongoing</span>
+        <span class="year">2026</span>
+        <span class="role">Research direction</span>
+      </div>
+      <div>
+        <h3>IGEN — Parent-Child Reinforcement Learning for VLA Fine-Tuning</h3>
+        <p class="sub">Pure imitation assumes the robot never makes mistakes. IGEN assumes it will — and learns from exactly those states.</p>
+        <figure class="pfig">
+          <img src="assets/aiworker.jpg" alt="The dual-arm AI Worker humanoid with teleoperation rig at ROBOTIS" loading="lazy">
+          <figcaption>The AI Worker dual-arm humanoid and my teleop rig — data collection (~90 episodes) for the VLA-RL line of work.</figcaption>
+        </figure>
+        <ul>
+          <li>A parent module decides <i>where</i> to generate corrective experience; a TD3 child (double Q-functions) learns from it — DAgger-style expert queries without full expert relabeling</li>
+          <li>+10% over BC baselines on LIBERO-Spatial in noise-injected conditions sampled from my own teleop distribution</li>
+          <li>TurboVLA fine-tuning (12 h on A100): 2.8× MAE improvement over 1,250 steps, 6.8× better than predict-mean baseline</li>
+          <li>Insight worth writing down: pure BC wins on clean benchmarks precisely because they contain no bad states — the case for corrective RL is the messy real world</li>
+        </ul>
+        <div class="tags"><span>Reinforcement Learning</span><span>TD3</span><span>DAgger</span><span>LIBERO</span><span>VLA-RL</span></div>
+      </div>
+    </div>
 
     <div class="proj reveal" id="pdpm">
       <div class="meta">
@@ -46,7 +112,7 @@
         <span class="role">First author · in submission</span>
       </div>
       <div>
-        <h3>PDPM — Perceptron-Driven Pipeline Morphing <span class="award">⚙️ flagship work</span></h3>
+        <h3>PDPM — Perceptron-Driven Pipeline Morphing <span class="award">⚙️ systems thread · first-author</span></h3>
         <p class="sub">A morphable RISC-V processor that reconfigures its pipeline depth at runtime, steered by an online-learned predictor</p>
         <figure class="pfig">
           <svg viewBox="0 0 1200 240" role="img" aria-label="Diagram of a pipeline morphing between seven, five, and three stages">
@@ -113,7 +179,7 @@
       </div>
     </div>
 
-    <div class="proj reveal" id="robotics">
+    <div class="proj reveal" id="embedded">
       <div class="meta">
         <span class="venue" style="--vc:#2e7d93">Industry R&amp;D</span>
         <span class="year">2024–25</span>
