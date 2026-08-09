@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Rotation — Dawit Chun</title>
+<meta name="description" content="Dawit Chun studies across five countries through Taejae University's global rotation: Seoul, Tokyo, San Francisco, New York, Shenzhen, and Beijing — a robotics education lived in six cities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>">
+<style>
+.route{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:10px 6px;margin-top:40px;overflow-x:auto}
+.route svg{display:block;width:100%;min-width:640px;height:auto}
+.city .sem{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e7d93;padding:5px 11px;border-radius:7px;margin-right:8px}
+.city .sem.up{background:var(--copper);color:#14100a}
+.host{font-size:.85rem;color:var(--ink-soft);font-style:italic;margin:2px 0 10px}
+.sem{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#2e7d93;padding:5px 11px;border-radius:7px;margin-right:8px}
+.sem.up{background:var(--copper);color:#14100a}
+.modelbox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--copper);border-radius:12px;box-shadow:var(--shadow);padding:24px 26px;margin-top:34px}
+.modelbox h3{font-size:1.05rem;margin-bottom:10px}
+.modelbox ul{list-style:none}
+.modelbox li{position:relative;padding-left:20px;margin-bottom:7px;font-size:.92rem;color:var(--ink-soft)}
+.modelbox li::before{content:"—";position:absolute;left:0;color:var(--copper-ink,#9c6410);font-weight:700}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Dawit <b>Chun</b></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="journey.html">Journey &amp; Honors</a></li>
+      <li><a href="rotation.html" class="active">Global Rotation</a></li>
+      <li><a href="service.html">Teaching &amp; Service</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="kicker">Global Rotation</span>
+    <h1>One degree,<br>lived in six cities.</h1>
+    <p>I study at Taejae University — Korea's answer to Minerva. From sophomore year, my entire cohort rotates through five countries: Seoul → Tokyo → San Francisco → New York → Shenzhen → Beijing. For someone who builds robots, the route reads like a map of the industry itself.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="route reveal">
+      <svg viewBox="0 0 1200 150" role="img" aria-label="Rotation route: Seoul, Tokyo, San Francisco, New York, Shenzhen, Beijing">
+        <path d="M70,95 C210,40 330,40 400,88 C470,40 590,40 660,88 C730,40 850,40 920,88 C990,40 1090,40 1140,90" fill="none" stroke="#d98e32" stroke-width="2.5" stroke-dasharray="7 7" opacity=".75"/>
+        <g fill="#0e1621">
+          <circle cx="70" cy="95" r="8"/><circle cx="292" cy="62" r="8"/><circle cx="512" cy="62" r="8"/><circle cx="732" cy="62" r="8"/><circle cx="952" cy="62" r="8"/><circle cx="1140" cy="90" r="8"/>
+        </g>
+        <g fill="#d98e32"><circle cx="70" cy="95" r="3.5"/><circle cx="292" cy="62" r="3.5"/><circle cx="512" cy="62" r="3.5"/><circle cx="732" cy="62" r="3.5"/><circle cx="952" cy="62" r="3.5"/><circle cx="1140" cy="90" r="3.5"/></g>
+        <g font-family="Inter,sans-serif" font-size="17" font-weight="600" fill="#171d26" text-anchor="middle">
+          <text x="70" y="128">Seoul</text><text x="292" y="95">Tokyo</text><text x="512" y="95">San Francisco</text><text x="732" y="95">New York</text><text x="952" y="95">Shenzhen</text><text x="1140" y="123">Beijing</text>
+        </g>
+        <g font-family="Inter,sans-serif" font-size="13" fill="#4a5464" text-anchor="middle">
+          <text x="70" y="145">'23–'24</text><text x="292" y="112">spring '25</text><text x="512" y="112">fall '25</text><text x="732" y="112">spring '26</text><text x="952" y="112">fall '26</text><text x="1140" y="140">spring '27</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="modelbox reveal">
+      <h3>What Taejae is — in one paragraph, for readers who haven't met it</h3>
+      <ul>
+        <li>A four-year university founded in 2023 (accredited by Korea's Ministry of Education), built around a Minerva-style global rotation — I am part of the founding cohort of 32 students, admitted at 15 as the youngest with the top entrance score</li>
+        <li>100% English instruction · every class a live seminar capped at 20 students on an active-learning platform · fully residential in every city</li>
+        <li>In each rotation city we live at a partner university and run a semester-long <b>Civic Project</b> — a team study of a real local urban problem, presented to faculty and city officials</li>
+      </ul>
+    </div>
+
+    <!-- SEOUL -->
+    <div class="act">
+      <h3><span class="sem">Sem 1–3 · 2023–24</span> Seoul — foundations and first machines</h3>
+      <div class="host">Taejae University home campus, Jongno-gu</div>
+      <div class="body">
+        <p>Three foundation semesters: physics, math, and the first university research — the JKSCI smart-window papers and the start of the Ubion autonomous-vehicle internship (Dec 2024) all happened from Seoul.</p>
+      </div>
+      <div class="gallery two" style="max-width:760px">
+        <figure class="reveal"><img src="assets/matric.jpg" alt="Matriculation Award ceremony with the university president" loading="lazy"><figcaption>Matriculation Award with the university president — my sister and I both entered at 15.</figcaption></figure>
+        <figure class="reveal"><img src="assets/window2.jpg" alt="The smart disaster window prototype built during the Seoul semesters" loading="lazy"><figcaption>Built in Seoul: the disaster-window prototype behind our first journal papers.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- TOKYO -->
+    <div class="act">
+      <h3><span class="sem">Sem 4 · Spring 2025</span> Tokyo — the semester of the world title</h3>
+      <div class="host">Hosted at Kanda University of International Studies, greater Tokyo (Chiba)</div>
+      <div class="body">
+        <p>Our first international rotation — living in the homeland of industrial robotics. While based in Japan, our team went to Yokohama for ACM CHI 2025 and <b>won 1st place worldwide in the Student Design Competition</b>. That summer also brought the Oxford-Stanford-Taejae Fellowship and the SNU DYROS robotics bootcamp.</p>
+      </div>
+      <div class="gallery two" style="max-width:760px">
+        <figure class="reveal"><img src="assets/chi-hall.jpg" alt="The CHI 2025 conference hall in Yokohama" loading="lazy"><figcaption>ACM CHI 2025, Yokohama — a train ride from our Tokyo campus.</figcaption></figure>
+        <figure class="reveal"><img src="assets/chatham.jpg" alt="At Chatham House, London, during the Oxford fellowship" loading="lazy"><figcaption>The rotation year's reach: Chatham House, London — Oxford-Stanford-Taejae Fellowship.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SF -->
+    <div class="act">
+      <h3><span class="sem">Sem 5 · Fall 2025</span> San Francisco — a semester in the Valley</h3>
+      <div class="host">Hosted at the University of San Francisco — resident on campus, taking USF–Taejae co-developed courses</div>
+      <div class="body">
+        <p>Living an hour from Stanford, Berkeley, and the VLA startups rewriting robotics (Physical Intelligence, Skild). This was the semester my two threads fused: the <b>PDPM morphable-processor work took shape</b> here, while the Valley's robot-learning wave set the direction I'd chase next.</p>
+      </div>
+    </div>
+
+    <!-- NY -->
+    <div class="act">
+      <h3><span class="sem">Sem 6 · Spring 2026</span> New York — the publishing semester</h3>
+      <div class="host">Hosted at Pace University, Lower Manhattan</div>
+      <div class="body">
+        <p>The semester the papers shipped: the <b>iPhoneme brain-to-text preprint went to arXiv (April 2026)</b>, the <b>PDPM ICCD submission was finalized</b>, and the patent application was filed — from the city of NYU's GRAIL and Columbia's robotics labs.</p>
+      </div>
+    </div>
+
+    <!-- SUMMER -->
+    <div class="act">
+      <h3><span class="sem">Summer 2026</span> Seoul interlude — ROBOTIS</h3>
+      <div class="body">
+        <p>Between rotations: the <b>Humanoid Software Team at ROBOTIS</b> — benchmarking 2026's SOTA VLA and world models on real manipulators, building Prior-ACT and IGEN, and contributing upstream. The internship that made physical AI my main road.</p>
+      </div>
+      <div class="gallery two" style="max-width:760px">
+        <figure class="reveal"><img src="assets/omy-setup.jpg" alt="The OMY manipulation rig at ROBOTIS" loading="lazy"><figcaption>My OMY benchmark rig at ROBOTIS.</figcaption></figure>
+        <figure class="reveal"><img src="assets/aiworker.jpg" alt="The AI Worker dual-arm humanoid at ROBOTIS" loading="lazy"><figcaption>The AI Worker dual-arm humanoid and my teleop rig.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SHENZHEN -->
+    <div class="act">
+      <h3><span class="sem up">Sem 7 · Fall 2026 — upcoming</span> Shenzhen — application season in the robot capital</h3>
+      <div class="host">Partner: Shenzhen University</div>
+      <div class="body">
+        <p>Next: the city of DJI and UBTECH — the place where robot hardware actually gets made at scale. For someone who has lived inside a robot company's software team, a semester in the world's hardware capital is the perfect field study — while I submit PhD applications from across the Pacific. Photos and Civic Project notes will appear here as the semester unfolds.</p>
+      </div>
+    </div>
+
+    <!-- BEIJING -->
+    <div class="act">
+      <h3><span class="sem up">Sem 8 · Spring 2027 — upcoming</span> Beijing — the closing semester</h3>
+      <div class="host">Partner: Peking University</div>
+      <div class="body">
+        <p>The final rotation — in the city of Unitree's humanoid rivals and China's embodied-AI push — while managing PhD interviews across a 15-hour time difference to the U.S. West Coast. Six cities, five countries, one degree: by graduation, "adapting to a new environment" won't be a hope in my SOP; it will be my transcript.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" style="padding-top:60px">
+  <div class="wrap">
+    <span class="kicker reveal">Contact</span>
+    <h2 class="reveal">Let's build robots that learn.</h2>
+    <p class="lead reveal">Prospective PhD student, Fall 2027 — robotics &amp; computer science.</p>
+    <a class="btn btn-primary reveal" href="mailto:dchun4748@gmail.com">dchun4748@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Dawit Chun · Taejae University, Seoul</span><span><a href="research.html">Research</a> · <a href="publications.html">Publications</a> · <a href="service.html">Service</a> · <a href="mailto:dchun4748@gmail.com">Email</a></span></div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
